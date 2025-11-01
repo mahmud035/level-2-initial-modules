@@ -3,7 +3,7 @@ import fsPromise from 'node:fs/promises';
 
 const successMessage = `File written successfully`;
 
-// Asynchronous version
+// ✅ Asynchronous version (Recommended)
 const content = `Hello, World!, Async!\n`;
 const filePath = `./texts/write.txt`;
 

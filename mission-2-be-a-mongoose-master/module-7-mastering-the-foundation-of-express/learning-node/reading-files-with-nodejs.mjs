@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import fsPromise from 'node:fs/promises';
 
-// Asynchronous version
+// ✅ Asynchronous version (Recommended)
 const filePath = `./texts/read.txt`;
 
 fs.readFile(filePath, 'utf8', (err, data) => {
