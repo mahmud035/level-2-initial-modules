@@ -1,6 +1,10 @@
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import express, { type Request, type Response } from 'express';
+import express, {
+  type NextFunction,
+  type Request,
+  type Response,
+} from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
@@ -26,7 +30,7 @@ app.use(cookieParser());
 // app.use(logger);
 
 // 4. Static files
-app.use('/uploads', express.static('uploads'));
+app.use('/api/v1/uploads', express.static('uploads'));
 
 // 5. Rate limiting
 // app.use('/api', generalLimiter);
@@ -64,16 +68,19 @@ courseRoutes.post('/create-course', (req: Request, res: Response) => {
 });
 
 // Params & Query example
-app.get('/users/:userId/posts/:postId', (req: Request, res: Response) => {
-  console.log(req.params);
-  console.log(req.query);
+app.get(
+  '/api/v1/users/:userId/posts/:postId',
+  (req: Request, res: Response) => {
+    console.log(req.params);
+    console.log(req.query);
 
-  res.json({
-    userId: req.params.userId,
-    postId: req.params.postId,
-    query: req.query.email,
-  });
-});
+    res.json({
+      userId: req.params.userId,
+      postId: req.params.postId,
+      query: req.query.email,
+    });
+  }
+);
 // ==============================================
 
 // 7. 404 handler (AFTER all routes)
@@ -86,5 +93,9 @@ app.get('/users/:userId/posts/:postId', (req: Request, res: Response) => {
 
 // 8. Error handler (LAST)
 // app.use(errorHandler);
+
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+  console.log(error);
+});
 
 export default app;
