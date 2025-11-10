@@ -86,7 +86,7 @@ function printAll(strs: string | string[] | null) {
 
 function example(x: string | number, y: string | boolean) {
   if (x === y) {
-    x.toUpperCase(); // Both are string
+    console.log(x.toUpperCase()); // Both are string
   }
 }
 

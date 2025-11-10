@@ -48,7 +48,7 @@ const readonlyNames: readonly string[] = ['Alice', 'Bob'];
 const nums: number[] = [1, 2, 3];
 
 // TypeScript infers `number` for `n`
-nums.map((n) => n * 2); // [2, 4, 6] (type: number[])
+nums.forEach((n) => n * 2); // [2, 4, 6] (type: number[])
 
 //* ----------------------------------------
 //* 2. Tuple Types
